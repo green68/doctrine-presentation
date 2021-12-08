@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Message{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Message! ✅</h1>
+
+    <ul>
+    {% for msg in msgs %}
+        <li>{{ msg }}</li>
+    {% endfor %}
+    </ul>
+
+    <div class="btn-command">
+        <a class="btn btn-primary" href="{{ path('products_list')}}">Liste</a>
+        {# <a class="btn btn-primary" href="{{ path('person_create')}}" >Création 1 person</a> #}
+        {# <a class="btn btn-primary" href="{{ path('persons_create')}}" >Création plusieurs persons</a> #}
+        {# {% if persons|length %}
+            <a class="btn btn-danger" href="{{ path('persons_delete')}}" >Vider la table</a>
+        {% endif %} #}
+        
+    </div>
+</div>
+
+
+{% endblock %}

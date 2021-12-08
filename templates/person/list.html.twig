@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Persons{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Liste des Persons ({{ persons|length }})</h1>
+
+    {# {{ dump(persons) }} #}
+
+    <ul>
+        {% for person in persons %}
+            <li>
+                {{ person.getId() }} : {{ person.getFirstName() }} {{ person.getLastName() }}
+                <a class="btn btn-primary" href="{{ path('person_delete_id', {id: person.getId})}}">Supprimer</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="btn-command">
+        <a class="btn btn-primary" href="{{ path('home')}}">Accueil</a>
+        <a class="btn btn-primary" href="{{ path('person_create')}}" >Création 1 person</a>
+        <a class="btn btn-primary" href="{{ path('persons_create')}}" >Création plusieurs persons</a>
+        {% if persons|length %}
+            <a class="btn btn-danger" href="{{ path('persons_delete', {parcours:"true"}) }}" >Vider la table (true)</a>
+            <a class="btn btn-danger" href="{{ path('persons_delete', {parcours:"false"}) }}" >Vider la table (false)</a>
+        {% endif %}
+        
+    </div>
+</div>
+
+{% endblock %}

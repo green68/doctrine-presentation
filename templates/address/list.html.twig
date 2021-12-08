@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Address{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Liste des Address ({{ addresses|length }})</h1>
+
+    {# {{ dump(addresses) }} #}
+
+    <ul>
+        {% for address in addresses %}
+            <li>
+                {{ address.getId }} : {{ address.getNum }} {{ address.getStreet }}  à {{ address.getTown }}
+                <a class="btn btn-primary" href="{{ path( 'address_delete_id', {id: address.getId} ) }}">Supprimer</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="btn-command">
+        <a class="btn btn-primary" href="{{ path('home')}}">Accueil</a>
+        <a class="btn btn-primary" href="{{ path('address_create')}}" >Création 1 address</a>
+        <a class="btn btn-primary" href="{{ path('addresses_create')}}" >Création plusieurs address</a>
+        {% if addresses|length %}
+            <a class="btn btn-danger" href="{{ path('addresses_delete_all')}}" >Vider la table</a>
+        {% endif %}
+        
+    </div>
+</div>
+
+{% endblock %}

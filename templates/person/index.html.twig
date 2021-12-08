@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PersonController!{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Hello ✅</h1>
+
+    {# This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ 'C:/Users/Acs/dev/presentation-doctrine/src/Controller/PersonController.php'|file_link(0) }}">src/Controller/PersonController.php</a></code></li>
+        <li>Your template at <code><a href="{{ 'C:/Users/Acs/dev/presentation-doctrine/templates/person/index.html.twig'|file_link(0) }}">templates/person/index.html.twig</a></code></li>
+    </ul> #}
+
+    <a class="btn btn-primary" href="{{ path('persons_list') }}" >Liste Persons</a>
+    <a class="btn btn-primary" href="{{ path('products_list') }}" >Liste Products</a>
+    <a class="btn btn-primary" href="{{ path('categories_list') }}" >Liste Categories</a>
+    {# <a class="btn btn-primary" href="addresses/list" >Liste des Address</a> #}
+    
+
+</div>
+{% endblock %}

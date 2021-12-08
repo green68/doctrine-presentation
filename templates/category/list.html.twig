@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Categories{% endblock %}
+
+{% block body %}
+
+<div class="example-wrapper">
+    <h1>Liste des catégories ✅</h1>
+
+    <ul style="display:flex; flex-direction:column;">
+    <li>id Catégory</li>
+    {% for category in categories %}
+        {% set productsNumber = category.getProducts|length %}
+        <li style="padding: .5rem;">
+            {{ category.getId }}
+            {{ category.getName }}
+            {{ productsNumber }}
+            {% if productsNumber != 0 %}
+                <a class="btn btn-danger" href="{{ path('categories_products_remove', {id: category.getId})}}">Supprimer les Produits</a>
+            {% endif %}
+            {# <a class="btn btn-primary" href="{{ path('product_show_lazy', {id: product.getId})}}">Visualiser lazy loading</a>
+            <a class="btn btn-primary" href="{{ path('product_show', {id: product.getId})}}">Visualiser</a> #}
+        </li>
+        
+    {% endfor %}
+    </ul>
+    <div class="btn-command">
+        <a class="btn btn-primary" href="{{ path('home')}}">Accueil</a>
+        {# <a class="btn btn-primary" href="{{ path('person_create')}}" >Création 1 person</a>
+        <a class="btn btn-primary" href="{{ path('persons_create')}}" >Création plusieurs persons</a>
+        {% if persons|length %}
+            <a class="btn btn-danger" href="{{ path('persons_delete')}}" >Vider la table</a>
+        {% endif %} #}
+        
+    </div>
+</div>
+{% endblock %}
